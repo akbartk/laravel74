@@ -9,6 +9,7 @@ docker run -dit \
 --name MyApp \
 --link db0001:mysql \
 --restart unless-stopped \
+--user 33:33 \
 -v ${pwd}:/var/www/html \
 -p 8080:80 \
 akbartk/laravel74:latest
