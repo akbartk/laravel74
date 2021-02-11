@@ -13,3 +13,12 @@ docker run -dit \
 -p 8080:80 \
 akbartk/laravel74:latest
 ```
+
+Exec
+```
+docker exec -it MyApp bash
+```
+```
+cd /var/www/html \
+&& composer install
+```
