@@ -22,8 +22,8 @@ RUN apt-get update && apt-get install -y \
 
 COPY vhost.conf /etc/apache2/sites-available/000-default.conf
 COPY vhost.conf /etc/apache2/sites-available/default-ssl.conf
-CMD ls -s /etc/apache2/mods-available/ssl.conf /etc/apache2/mods-enabled/ssl.conf \
-    && ls -s /etc/apache2/mods-available/ssl.load /etc/apache2/mods-enabled/ssl.load
+CMD ln -s /etc/apache2/mods-available/ssl.conf /etc/apache2/mods-enabled/ssl.conf \
+    && ln -s /etc/apache2/mods-available/ssl.load /etc/apache2/mods-enabled/ssl.load
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
