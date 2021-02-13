@@ -1,7 +1,7 @@
 FROM php:7.2-fpm-alpine
 
 # Copy composer.lock and composer.json
-COPY composer.lock composer.json /var/www/html/
+#COPY composer.lock composer.json /var/www/html/
 
 # Set working directory
 WORKDIR /var/www/html
@@ -47,5 +47,5 @@ COPY --chown=www-data:www-data . /var/www/html
 USER www-data
 
 # Expose port 9000 and start php-fpm server
-EXPOSE 9000
+EXPOSE 8090
 CMD ["php-fpm"]
