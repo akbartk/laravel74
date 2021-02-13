@@ -6,14 +6,18 @@
 
 ```
 docker run -dit \
---name MyApp \
---link db0001:mysql \
+--name sikuda \
+--link db1:mysql \
 --restart unless-stopped \
---user 33:33 \
--v ${pwd}:/var/www/html \
--v ${pwd}:/cert \
--p 8080:80 \
--p 8081:443 \
+--user 1000:1000 \
+-v /opt/mydir:/var/www/html \
+-v /opt/cert:/cert:ro \
+-p 8090:80 \
+-p 8091:443 \
+-e SERVER_NAME=mydomain.co \
+-e EMAIL_ADMIN=mydomain.co \
+-e SSL_CERT_FILE=/cert/my.pem \
+-e SSL_CERT_KEY=/cert/my.key \
 akbartk/laravel74:latest
 ```
 
