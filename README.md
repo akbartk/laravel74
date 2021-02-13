@@ -11,7 +11,9 @@ docker run -dit \
 --restart unless-stopped \
 --user 33:33 \
 -v ${pwd}:/var/www/html \
+-v ${pwd}:/cert \
 -p 8080:80 \
+-p 8081:443 \
 akbartk/laravel74:latest
 ```
 
