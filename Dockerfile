@@ -1,4 +1,4 @@
-ROM php:7.2-fpm-alpine
+FROM php:7.2-fpm-alpine
 
 # Copy composer.lock and composer.json
 COPY composer.lock composer.json /var/www/html/
