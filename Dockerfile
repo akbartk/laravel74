@@ -28,13 +28,11 @@ RUN apk update && apk add --no-cache \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install mysqli \
     && docker-php-ext-install zip \
-    && docker-php-source delete
+    && docker-php-source delete \
+    && rm -rf /var/cache/apk/*
 
 # Install PHP Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-# Remove Cache
-RUN rm -rf /var/cache/apk/*
 
 # Add UID '1000' to www-data
 RUN usermod -u 1000 www-data
