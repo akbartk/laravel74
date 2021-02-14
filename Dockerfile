@@ -22,8 +22,9 @@ RUN apk update && apk add --no-cache \
     php7-gd \
     php7-dom \
     php7-session \
-    php7-zlib \
-    && docker-php-ext-configure gd \
+    php7-zlib 
+
+RUN docker-php-ext-configure gd \
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install mysqli \
