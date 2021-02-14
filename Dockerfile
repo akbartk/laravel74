@@ -1,8 +1,5 @@
 FROM php:7.2-fpm-alpine
 
-# Copy composer.lock and composer.json
-#COPY composer.lock composer.json /var/www/html/
-
 # Set working directory
 WORKDIR /var/www/html
 
@@ -25,11 +22,13 @@ RUN apk update && apk add --no-cache \
     php7-gd \
     php7-dom \
     php7-session \
-    php7-zlib
-
-# Add and Enable PHP-PDO Extenstions
-RUN docker-php-ext-install pdo pdo_mysql
-RUN docker-php-ext-enable pdo_mysql
+    php7-zlib \
+    && docker-php-ext-configure gd \
+    && docker-php-ext-install -j$(nproc) gd \
+    && docker-php-ext-install pdo_mysql \
+    && docker-php-ext-install mysqli \
+    && docker-php-ext-install zip \
+    && docker-php-source delete
 
 # Install PHP Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
