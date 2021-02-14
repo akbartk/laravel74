@@ -14,18 +14,17 @@ docker run -dit \
 -v /opt/cert:/cert:ro \
 -p 8090:80 \
 -p 8091:443 \
--e SERVER_NAME=mydomain.co \
--e EMAIL_ADMIN=mydomain.co \
--e SSL_CERT_FILE=/cert/my.pem \
--e SSL_CERT_KEY=/cert/my.key \
 akbartk/laravel74:latest
 ```
 
 Exec
 ```
-docker exec -it MyApp bash
+docker run - -it MyApp bash
 ```
 ```
 cd /var/www/html \
 && composer install
+```
+```
+docker run --rm akbartk/laravel74:latest composer install
 ```
