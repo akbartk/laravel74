@@ -1,4 +1,4 @@
-# Laravel apache 7.4
+# Laravel apache 7.4 .
 
 `FROM php:7.4.1-apache`
 
